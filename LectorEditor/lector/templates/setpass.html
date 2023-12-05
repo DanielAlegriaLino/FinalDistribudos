@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+<h1> Ingrese la nueva contraseña </h1>
+
+<form method="post" action="{% url 'Setpass' user_id=user_id %}">
+    {% csrf_token %}
+    <label for="new_password">Nueva Contraseña:</label>
+    <input type="password" name="new_password" required>
+    <label for="confirm_password">Confirmar Contraseña:</label>
+    <input type="password" name="confirm_password" required>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger" role="alert">
+            {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <button type="submit">Guardar Contraseña</button>
+</form>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

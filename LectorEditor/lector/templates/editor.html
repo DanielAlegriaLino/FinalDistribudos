@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'Logout' %}">Cerrar sesión</a>
+<img class="logo" src="https://iconos8.es/icon/WWbh8M1RIx9k/sigma" alt="sigma.png">
+<img class="logoavatar" class="https://iconos8.es/icon/9eBcy3sDv7jb/sigma" alt="sigma2.png">
+
+
+{% if name %}
+    <h1>Bienvenido, {{ name }}!</h1>
+{% endif %}
+
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

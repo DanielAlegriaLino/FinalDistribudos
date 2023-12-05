@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+  <title>Iniciar Sesion</title>
+
+{% endblock %}
+
+{% block content %}
+<div class="main-title d-flex justify-content-center my-5">
+  <h1 class="my">Iniciar sesión</h1>
+</div>
+<div class="container d-flex justify-content-center align-middle flex-column main-content">
+  <div class="row row-cols-1">
+      <div class="col d-flex justify-content-center mb-4">
+          <div class="profile-pic">
+              <i class="fa-solid fa-user"></i>
+          </div>
+      </div>
+      <div class="col">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-danger" role="alert">
+              {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+
+          <form method="post">
+              {% csrf_token %}
+              <input type="text" class="form-control mb-3" placeholder="Nombre" name="username" required>
+              <input type="password" class="form-control mb-3" placeholder="Contraseña" name="password" required>
+              <input type="submit" value="Iniciar Sesión" class="btn cuenta-btn mb-3"> 
+          </form>
+      </div>
+      <div class="col d-flex justify-content-between mt-2">
+          <a href="{% url 'Signup'%}">Crear Cuenta</a>
+          <a href="{% url 'Resetpass'%}">Olvidé mi contraseña</a>
+      </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+
+{% block script %}
+  <script src="https://kit.fontawesome.com/d17bcbb17f.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+{% endblock %}

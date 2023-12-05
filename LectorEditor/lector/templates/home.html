@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title> Home </title>
+{% endblock %}
+
+{% block content %}
+    <div class="contenedor"> 
+        <h1> Bienvenido </h1>
+        <a href="{% url 'Signup'%}"> <h4> Registrarse </h4> </a>
+        <a href="{% url 'Signin'%}"> <h4> Iniciar Sesión </h4></a>
+        <a href="{% url 'Editor'%}"> <h4> Acceder como invitado </h4></a>
+    </div>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

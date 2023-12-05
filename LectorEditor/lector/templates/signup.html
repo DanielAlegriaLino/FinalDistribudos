@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+<title> Registro </title>
+
+{% endblock %}
+
+{% block content %}   
+<div class="main-title d-flex justify-content-center my-5">
+    <h1 class="my">Registrarse</h1>
+</div>
+<div class="container d-flex justify-content-center align-middle flex-column main-content">
+    <div class="row row-cols-1">
+        <div class="col">
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" class="form-control mb-3" id="{{ form.username.id_for_label }}" name="{{ form.username.name }}" placeholder="Usuario" value="{{ form.username.value }}">
+                <input type="email" class="form-control mb-3" id="{{ form.email.id_for_label }}" name="{{ form.email.name }}" placeholder="Correo" value="{{ form.email.value }}">
+                <input type="password" class="form-control mb-3" id="{{ form.password1.id_for_label }}" name="{{ form.password1.name }}" placeholder="Contraseña">
+                <input type="password" class="form-control mb-4" id="{{ form.password2.id_for_label }}" name="{{ form.password2.name }}" placeholder="Confirmar Contraseña">
+                <input type="checkbox" class="form-check-input mb-3" value="" id="mail-check">
+                <label for="mail-check" class="form-check-label text-muted mb-3">Deseo recibir notificaciones</label>
+                {% if form.password2.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {% for error in form.password2.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <br>
+                <input type="submit" value="Crear Cuenta" class="btn cuenta-btn mb-3">    
+            </form>
+        </div>
+        <div class="col d-flex justify-content-between mt-2">
+            <a href="{% url 'Signin'%}">Ya tengo una cuenta</a>
+            <a href="">Olvidé mi contraseña</a>
+        </div>
+    </div>
+</div>>
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="https://kit.fontawesome.com/d17bcbb17f.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+{% endblock %}

@@ -1,0 +1,41 @@
+.main-content{
+    width: 30%;
+}
+
+.profile-pic{
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    border-radius: 50%;
+    border: 2px solid #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.fa-user{
+    border-radius: 50%;
+    font-size: 100px;
+}
+
+input.form-control:focus{
+    border-color: #FFD93D;
+    box-shadow: 0 0 0 0.2rem #FFD93D; 
+}
+
+.cuenta-btn{
+    background-color: #FFD93D;
+    color: black;
+    font-weight: 600;
+    width: 100%;
+}
+
+.cuenta-btn:hover{
+    background-color: rgb(255, 247, 91);
+}
+
+.cuenta-btn:active{
+    background-color: rgb(255, 247, 91)!important;
+    color: black;
+}

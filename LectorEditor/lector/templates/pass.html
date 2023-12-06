@@ -2,28 +2,46 @@
 {% load static %}
 
 {% block head %}
-
+    <link rel="stylesheet" href="{% static 'css/pass.css' %}">
+    <title> Cambiar contraseña</title>
 {% endblock %}
 
 {% block content %}
 
-<h1> Cambio de contraseña mediante correo </h1>
-
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-danger" role="alert">
-        {{ message }}
+<div class="arrow-container">
+    <h1 class="arrow"><a href="{% url 'Home'%}"><i class="fa-solid fa-arrow-left mt-4"></i></a></h1>
+  </div>
+  <div class="main-title d-flex justify-content-center mb-3">
+    <h1 class="my">Cambiar Contraseña</h1>
+  </div>
+  <div class="container d-flex justify-content-center align-middle flex-column main-content">
+    <div class="row row-cols-1">
+        <div class="col d-flex justify-content-center mb-4">
         </div>
-    {% endfor %}
-{% endif %}
+        <div class="col">
+            <form method="post" action="{% url 'Resetpass' %}">
+                {% csrf_token %}
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-danger" role="alert">
+                {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="floatingInputValue" placeholder="Correo electrónico" name="email" required>
+                  <label for="floatingInputValue">Correo electrónico</label>
+                </div>
+                <input type="submit" value="Iniciar Sesión" class="btn cuenta-btn mb-3"> 
+            </form>     
+        </div>
+    </div>
+  </div>
 
-<form method="post" action="{% url 'Resetpass' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Enviar</button>
-</form>
+
 {% endblock %}
 
 {% block script %}
-
+<script src="https://kit.fontawesome.com/d17bcbb17f.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 {% endblock %}

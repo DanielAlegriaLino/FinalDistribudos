@@ -16,8 +16,8 @@
         <div class="col">
             <form method="post">
                 {% csrf_token %}
-                <input type="text" class="form-control mb-3" id="{{ form.username.id_for_label }}" name="{{ form.username.name }}" placeholder="Usuario" value="{{ form.username.value }}">
-                <input type="email" class="form-control mb-3" id="{{ form.email.id_for_label }}" name="{{ form.email.name }}" placeholder="Correo" value="{{ form.email.value }}">
+                <input type="text" class="form-control mb-3" id="{{ form.username.id_for_label }}" name="{{ form.username.name }}" placeholder="Usuario">
+                <input type="email" class="form-control mb-3" id="{{ form.email.id_for_label }}" name="{{ form.email.name }}" placeholder="Correo">
                 <input type="password" class="form-control mb-3" id="{{ form.password1.id_for_label }}" name="{{ form.password1.name }}" placeholder="Contraseña">
                 <input type="password" class="form-control mb-4" id="{{ form.password2.id_for_label }}" name="{{ form.password2.name }}" placeholder="Confirmar Contraseña">
                 <input type="checkbox" class="form-check-input mb-3" value="" id="mail-check">

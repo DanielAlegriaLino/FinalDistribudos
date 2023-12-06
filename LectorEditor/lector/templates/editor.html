@@ -1,22 +1,70 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+<title> Editor </title>
 
 {% endblock %}
 
 {% block content %}
-<a href="{% url 'Logout' %}">Cerrar sesión</a>
-<img class="logo" src="https://iconos8.es/icon/WWbh8M1RIx9k/sigma" alt="sigma.png">
-<img class="logoavatar" class="https://iconos8.es/icon/9eBcy3sDv7jb/sigma" alt="sigma2.png">
 
+{% if user.is_authenticated %}
+<header class="p-3 d-flex flex-column flex-md-row justify-content-between align-items-center border-bottom">
+    <div class="d-flex align-items-center">
+        <a href="{% url 'Home' %}"><img src="{% static 'img/logo.png' %}" class="logo me-4" alt=""></a>
+        <h5 class="mt-1">SIGMA</h5>
+    </div>
+    <nav class="d-flex align-items-center">
+        <div class="dropdown">
+            <a class="d-flex align-items-center text-white text-decoration-none" id="userDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <h5 class="text-white me-2">{{user.username}}</h5>
+                <img src="{% static 'img/user.png' %}"profile-img" alt="">
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal" href="#">Cerrar sesión</a></li>
+            </ul>
+        </div>
+    </nav>        
+</header>
 
-{% if name %}
-    <h1>Bienvenido, {{ name }}!</h1>
+<!-- Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="logoutModalLabel">Cerrar sesión</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que deseas cerrar sesión?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a href="{% url 'Logout' %}" class="btn btn-danger">Cerrar sesión</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<header class="p-3 d-flex flex-column flex-md-row justify-content-between align-items-center border-bottom">
+    <div class="d-flex align-items-center">
+        <a href="{% url 'Home' %}"><img src="{% static 'img/logo.png' %}" class="logo me-4" alt=""></a>
+        <h5 class="mt-1">SIGMA</h5>
+    </div>
+    <nav>
+        <a href="{% url 'Signup' %}" class="signup btn btn-outline-custom d-block d-sm-inline-block mt-3 mt-sm-0">Crear Cuenta</a>
+        <a href="{% url 'Signin' %}" class="signin btn btn-outline-custom d-block d-sm-inline-block mt-3 mt-sm-0">Iniciar Sesión</a>
+    </nav>        
+</header>
 {% endif %}
+
 
 
 {% endblock %}
 
 {% block script %}
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 {% endblock %}

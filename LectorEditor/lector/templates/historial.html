@@ -48,18 +48,18 @@
 </div>
 
 <!-- Historial -->
-<h1 class="ms-4 mt-4">Historial</h1>
+{% for registro in registros %}
 <div class="container">
     <div class="row mt-4">
         <!-- Parte superior -->
         <div class="col-md-12 custom-bg text-dark py-2 rounded-top">
-            <h4>Fecha</h4>
+            <h4>{{ registro.date }}</h4>
         </div>
     </div>
     <div class="row">
         <!-- Parte inferior -->
         <div class="col-md-8 bg-light p-3 rounded-bottom">
-            <p class="message">Mensaje</p>
+            <p class="message">{{registro.code}}</p>
         </div>
         <div class="col-md-4 bg-light p-3 d-flex justify-content-end rounded-top">
             <a class="btn">
@@ -69,12 +69,8 @@
         </div>
     </div>
 </div>
+{% endfor %}
 
-<div class="contenedor">
-    {% for registro in registros %}
-        {{ registro.date }} - {{registro.code}} <br>
-    {% endfor %}
-</div>
 {% endblock %}
 
 {% block script %}

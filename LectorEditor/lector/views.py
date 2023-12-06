@@ -1,10 +1,12 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import RegistroForm, EmailForm, HistorialForm
 from .models import Historial
+
+import js2py
 
 def Home(request):
     if request.user.is_authenticated:
@@ -99,3 +101,17 @@ def Editor(request):
 def HistorialList(request):
     Registros = Historial.objects.filter(user=request.user)
     return render(request, 'historial.html', {'registros': Registros})
+
+def RenderCode(request):
+    def ejecutar_codigo_js(codigo_js):
+        try:
+            default = execjs.get()
+            return default.eval(codigo_js)
+            
+        except Exception as e:
+            return f"Error al ejecutar el código JavaScript: {str(e)}"
+    
+    code = request.GET.get('code','')
+    log = js2py.eval_js("function sumar(){"+code+ "}sumar()")
+    
+    return HttpResponse( log )

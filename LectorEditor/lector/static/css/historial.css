@@ -1,0 +1,19 @@
+.custom-bg {
+    background-color: #FFD93D;
+}
+
+.btnAbrir {
+    color: #FFD93D;
+    background-color: #272829;
+}
+    
+.btnAbrir:hover {
+        color: #272829;
+        border-color: #FFD93D;
+}
+
+.message {
+    max-height: calc(1.5em * 5);
+    overflow: hidden;
+    line-height: 1.5em;
+}

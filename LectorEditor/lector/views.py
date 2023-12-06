@@ -3,7 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .forms import RegistroForm, EmailForm
+from .forms import RegistroForm, EmailForm, HistorialForm
+from .models import Historial
 
 def Home(request):
     if request.user.is_authenticated:
@@ -84,6 +85,17 @@ def SetPass(request, user_id):
 
             
 def Editor(request):
-    
-    return render(request, 'editor.html')
+    if request.method == 'POST':
+        form = HistorialForm(request.POST)
+        if form.is_valid():
+            form.user = request.user
+            form.save()
+            return redirect('Editor')
+    else:
+        form = HistorialForm()
+    return render(request, 'editor.html', {'form': form})
 
+@login_required
+def HistorialList(request):
+    Registros = Historial.objects.filter(user=request.user)
+    return render(request, 'historial.html', {'registros': Registros})

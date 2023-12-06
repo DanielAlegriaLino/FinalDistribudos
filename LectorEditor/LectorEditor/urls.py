@@ -29,6 +29,7 @@ urlpatterns = [
     path('resetpassword/', views.ResetPass, name='Resetpass'),
     path('newpassword/<int:user_id>', views.SetPass, name='Setpass'),
     path('editor/', views.Editor, name="Editor"),
+    path('historial/', views.HistorialList, name='Historial'),
 ]
 
 

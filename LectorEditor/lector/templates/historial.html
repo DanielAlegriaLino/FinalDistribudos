@@ -2,16 +2,14 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/editor.css' %}">
+<link rel="stylesheet" href="{% static 'css/historial.css' %}">
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-
 <title> Editor </title>
 
 {% endblock %}
 
 {% block content %}
 
-{% if user.is_authenticated %}
 <header class="p-3 d-flex flex-column flex-md-row justify-content-between align-items-center border-bottom">
     <div class="d-flex align-items-center">
         <a href="{% url 'Home' %}"><img src="{% static 'img/logo.png' %}" class="logo me-4" alt=""></a>
@@ -48,29 +46,12 @@
         </div>
     </div>
 </div>
-{% else %}
-<header class="p-3 d-flex flex-column flex-md-row justify-content-between align-items-center border-bottom">
-    <div class="d-flex align-items-center">
-        <a href="{% url 'Home' %}"><img src="{% static 'img/logo.png' %}" class="logo me-4" alt=""></a>
-        <h5 class="mt-1">SIGMA</h5>
-    </div>
-    <nav>
-        <a href="{% url 'Signup' %}" class="signup btn btn-outline-custom d-block d-sm-inline-block mt-3 mt-sm-0">Crear Cuenta</a>
-        <a href="{% url 'Signin' %}" class="signin btn btn-outline-custom d-block d-sm-inline-block mt-3 mt-sm-0">Iniciar Sesión</a>
-    </nav>        
-</header>
-{% endif %}
-
 
 <div class="contenedor">
-    <a href="{% url 'Historial' %}" class="signin btn btn-outline-custom d-block d-sm-inline-block mt-3 mt-sm-0">Historial</a>
-    <form method="post" action="{% url 'Editor' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
+    {% for registro in registros %}
+        {{ registro.date }} - {{registro.code}} <br>
+    {% endfor %}
 </div>
-
 {% endblock %}
 
 {% block script %}

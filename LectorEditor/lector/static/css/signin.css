@@ -2,6 +2,18 @@
     width: 30%;
 }
 
+.arrow-container{
+    margin-left: 120px;
+}
+
+.arrow{
+    font-size: 2.5rem;    
+}
+
+.arrow a{
+    color: black;
+}
+
 .profile-pic{
     width: 150px;
     height: 150px;

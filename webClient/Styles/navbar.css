@@ -1,0 +1,42 @@
+header {
+    background: #272829;
+    color: #FFD93D;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+.profile-img {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+}
+
+.signup {
+    color: white;
+    background-color: #272829;
+    border-color: #272829;
+}
+
+.signup:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.signup:active, .signup:focus {
+    border: 0;
+}
+
+.signin {
+    color: #FFD93D;
+    border-color: #FFD93D;
+}
+
+.signin:hover {
+    color: #272829;
+    background-color: #FFD93D;
+    border-color: #FFD93D;
+}

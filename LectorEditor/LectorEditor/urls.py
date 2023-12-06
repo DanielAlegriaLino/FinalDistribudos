@@ -30,6 +30,7 @@ urlpatterns = [
     path('newpassword/<int:user_id>', views.SetPass, name='Setpass'),
     path('editor/', views.Editor, name="Editor"),
     path('historial/', views.HistorialList, name='Historial'),
+    path('microservicio/', views.RenderCode, name='Microservicio'),
 ]
 
 

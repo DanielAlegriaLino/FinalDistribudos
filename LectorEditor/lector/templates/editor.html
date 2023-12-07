@@ -17,17 +17,23 @@
         <a href="{% url 'Home' %}"><img src="{% static 'img/logo.png' %}" class="logo me-4" alt=""></a>
         <h5 class="mt-1">SIGMA</h5>
     </div>
+    <h4 class="text-white">JavaScript Copilot</h4>
     <nav class="d-flex align-items-center">
         <div class="dropdown">
-            <a class="d-flex align-items-center text-white text-decoration-none" id="userDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <h5 class="text-white me-2">{{user.username}}</h5>
-                <img src="{% static 'img/user.png' %}"profile-img" alt="">
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal" href="#">Cerrar sesión</a></li>
-            </ul>
+            <div class="d-flex align-items-center">
+                <a href="#" class="btn btn-custom me-4">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </a>
+                <a class="d-flex align-items-center text-white text-decoration-none" id="userDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <h5 class="text-white me-2">{{user.username}}</h5>
+                    <img src="{% static 'img/user.png' %}" class="profile-img" alt="">
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal" href="#">Cerrar sesión</a></li>
+                </ul>
+            </div>
         </div>
-    </nav>        
+    </nav>     
 </header>
 
 <!-- Modal -->
@@ -54,6 +60,7 @@
         <a href="{% url 'Home' %}"><img src="{% static 'img/logo.png' %}" class="logo me-4" alt=""></a>
         <h5 class="mt-1">SIGMA</h5>
     </div>
+    <h4 class="text-white">JavaScript Copilot</h4>
     <nav>
         <a href="{% url 'Signup' %}" class="signup btn btn-outline-custom d-block d-sm-inline-block mt-3 mt-sm-0">Crear Cuenta</a>
         <a href="{% url 'Signin' %}" class="signin btn btn-outline-custom d-block d-sm-inline-block mt-3 mt-sm-0">Iniciar Sesión</a>
@@ -63,6 +70,7 @@
 
 
 <div class="session">
+    <div class="text-center mb-4 mt-2"><h1><b>Sigma Editor</b></h1></div>
     <div class="upper-session d-flex justify-content-center mb-3">
         <div class="editor">
             <!-- <a href="{% url 'Historial' %}" class="signin btn btn-outline-custom d-block d-sm-inline-block mt-3 mt-sm-0">Historial</a> -->
@@ -71,18 +79,20 @@
                 <!-- <button type="submit">Guardar</button>
             </form> -->
         </div>
-        <div class="options d-flex flex-column mx-4 justify-content-evenly">
-            <button class="btn btn-circle run"><i class="fa-solid fa-play"></i></button>
-            <button class="btn btn-circle save"><i class="fa-solid fa-floppy-disk"></i></button>
-            <button class="btn btn-circle new"><i class="fa-solid fa-plus"></i></button>
+        <div class="options d-flex flex-column mx-4 justify-content-center">
+            <button class="btn btn-circle run mb-4"><i class="fa-solid fa-play"></i></button>
+            <button class="btn btn-circle save mb-4"><i class="fa-solid fa-floppy-disk"></i></button>
         </div>
-        <div class="feedback p-3">
-            <p class="text-black">Presione el botón play para ejecutar y analizar el código</p>
+        <div class="right-bar">
+            <div class="feedback p-3">
+                <div class="text-center"><b>Análisis</b></div>
+                <p class="text-black">Presione el botón play para ejecutar y analizar el código</p>
+            </div>
+            <div class="results py-2">
+                <div class="text-center"><b>Resultados</b></div>
+                <p class="px-5 pt-3 output"></p>
+            </div>
         </div>
-    </div>
-    <div class="results">
-        <div class="divider p-3 text-center">Resultados</div>
-        <p class="px-5 pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure aspernatur magnam excepturi, totam porro nihil illum doloremque voluptate blanditiis voluptas voluptatem nisi natus veniam cupiditate, numquam, amet repudiandae perferendis ab.</p>
     </div>
 </div>
 

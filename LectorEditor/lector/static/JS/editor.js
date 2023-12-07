@@ -1,6 +1,6 @@
 const runbtn = document.querySelector(".run")
 const output = document.querySelector(".output")
-const host = 'http://127.0.0.1:8000/microservicio?code='
+const host = '/microservicio?code='
 
 let codeBlock = document.querySelector('.editor') 
 let editor = ace.edit(codeBlock);

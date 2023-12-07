@@ -44,4 +44,4 @@ jobs:
         label: 'Running server'
         status: '100%'
         color: 'blue,555,daf'
-        path: 'coverage.svg'
+        path: '.github/workflows/django.yml/badge.svg'

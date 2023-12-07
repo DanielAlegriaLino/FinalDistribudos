@@ -37,3 +37,11 @@ jobs:
     - name: Stop Django server
       run: |
         pkill -f "python manage.py runserver"
+        
+    - name: Badge Action
+      uses: emibcn/badge-action@v2.0.2
+      with:
+        label: 'Running server'
+        status: '100%'
+        color: 'blue,555,daf'
+        path: '.github/badges/coverage.svg'

@@ -1,6 +1,8 @@
 const runbtn = document.querySelector(".run")
 const output = document.querySelector(".output")
+const analysis = document.getElementById("TextAnalisis")
 const host = '/microservicio?code='
+const host_analizadorcodigo = "/microservicio/analizar_codigo?code="
 
 let codeBlock = document.querySelector('.editor') 
 let editor = ace.edit(codeBlock);
@@ -18,7 +20,19 @@ runbtn.addEventListener('click', () => {
         return response.text();
     })
     .then(text => {
-        console.log(text)
-        output.textContent = text
+        if(text.length<100){
+            output.textContent = text
+            console.log(text)
+        }
+    })
+    analysis.textContent = "Analizando"
+
+    fetch(`${host_analizadorcodigo}${encoded}`)
+    .then(response => {
+        return response.text();
+    })
+    .then(text => {
+            analysis.textContent=text
+            console.log(text)
     })
 })

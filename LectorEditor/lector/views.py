@@ -5,6 +5,12 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import RegistroForm, EmailForm, HistorialForm
 from .models import Historial
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
+from django.contrib.auth.models import User
+from django.contrib import messages
+from .forms import RegistroForm, EmailForm, HistorialForm
+from .models import Historial
+
 
 import js2py
 from openai import OpenAI
@@ -107,6 +113,27 @@ def Editor(request):
 def HistorialList(request):
     Registros = Historial.objects.filter(user=request.user)
     return render(request, 'historial.html', {'registros': Registros})
+
+def Delete(request, registro_id):
+    registro = get_object_or_404(Historial, id=registro_id)
+    if request.method == 'POST':
+        registro.delete()
+        return redirect('Historial')
+    
+    return render(request, 'Historial.html', {'registro': registro})
+
+def Open(request, registro_id):
+    registro = get_object_or_404(Historial, id=registro_id)
+
+    if request.method == 'POST':
+        form = HistorialForm(request.POST, instance=registro)
+        if form.is_valid():
+            form.user = request.user
+            form.save()
+            return redirect('Historial')
+    else:
+        form = HistorialForm(instance=registro)
+    return render(request, 'editor-clon.html', {'registro': registro, 'form': form})
 
 def RenderCode(request):
     def ejecutar_codigo_js(codigo_js):

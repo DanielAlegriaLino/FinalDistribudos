@@ -31,7 +31,9 @@ urlpatterns = [
     path('editor/', views.Editor, name="Editor"),
     path('historial/', views.HistorialList, name='Historial'),
     path('microservicio/', views.RenderCode, name='Microservicio'),
-    path('microservicio/analizar_codigo', views.AnalizeCode, name='AnalizarCodigo')
+    path('microservicio/analizar_codigo', views.AnalizeCode, name='AnalizarCodigo'),
+    path('codigo/<int:registro_id>', views.Open, name='Open'),
+    path('delete/<int:registro_id>', views.Delete, name='Delete'),
 ]
 
 

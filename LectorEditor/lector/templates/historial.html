@@ -15,11 +15,16 @@
         <a href="{% url 'Home' %}"><img src="{% static 'img/logo.png' %}" class="logo me-4" alt=""></a>
         <h5 class="mt-1">SIGMA</h5>
     </div>
+    <h4 class="text-white">JavaScript Copilot</h4>
     <nav class="d-flex align-items-center">
         <div class="dropdown">
+            <div class="d-flex align-items-center">
+                <a href="{% url 'Historial' %}" class="btn btn-custom me-4">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </a>
             <a class="d-flex align-items-center text-white text-decoration-none" id="userDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <h5 class="text-white me-2">{{user.username}}</h5>
-                <img src="{% static 'img/user.png' %}"profile-img" alt="">
+                <img src="{% static 'img/user.png' %}" class="profile-img" alt="">
             </a>
             <ul class="dropdown-menu" aria-labelledby="userDropdown">
                 <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal" href="#">Cerrar sesión</a></li>
@@ -62,10 +67,19 @@
             <p class="message">{{registro.code}}</p>
         </div>
         <div class="col-md-4 bg-light p-3 d-flex justify-content-end rounded-top">
-            <a class="btn">
-                <i class="fa-solid fa-trash"></i>
-            </a>
-            <a href="#" class="btnAbrir btn btn-custom ms-2">Abrir</a>
+            <div class="forom">
+            <form  method="post" action="{% url 'Delete' registro.id %}" style="display:inline;">
+                {% csrf_token %}
+                <div class="d-flex align-items-center">
+                    <a class="btn">
+                        <button class="borrar" type="submit">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </a>
+                </div>
+            </form>
+            </div>
+            <a href="{% url 'Open' registro.id %}" class="btnAbrir btn btn-custom ms-2">Abrir</a>
         </div>
     </div>
 </div>
@@ -76,4 +90,5 @@
 {% block script %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/ea585fb401.js" crossorigin="anonymous"></script>
+    
 {% endblock %}

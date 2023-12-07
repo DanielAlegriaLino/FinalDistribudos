@@ -9,7 +9,15 @@ let editor = ace.edit(codeBlock);
 editor.setOptions({autoScrollEditorIntoView: true})
     editor.setTheme('ace/theme/chaos')
     editor.session.setMode("ace/mode/javascript");
-    editor.setValue('console.log("Hola, Sigma Coders!");')
+    if (document.getElementById('resultado').value == ''){
+        editor.setValue('console.log("Hola, Sigma Coders!");')
+    }
+    else{
+        var codigo = document.getElementById('resultado').value;
+        var lineas = codigo.split(';');
+        var nuevoCodigo = lineas.join(';\n');
+        editor.setValue(`${nuevoCodigo}`);
+    }
 
 runbtn.addEventListener('click', () => {
     let code = editor.getValue();
@@ -36,3 +44,8 @@ runbtn.addEventListener('click', () => {
             console.log(text)
     })
 })
+
+function concatenarSpan() {
+    var analisis = editor.getValue();
+    document.getElementById('resultado').value = analisis;
+}

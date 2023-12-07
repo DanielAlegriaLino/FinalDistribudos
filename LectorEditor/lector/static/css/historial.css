@@ -1,8 +1,37 @@
-.custom-bg {
+body{
     background-color: #FFD93D;
 }
 
+.custom-bg {
+    background-color: #00000086;
+}
+
+.custom-bg h4{
+    color: white;
+}
+.forom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.borrar{
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+.btn{
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
 .btnAbrir {
+    display: flex;
+    align-items: center;
+    justify-items: center;
     color: #FFD93D;
     background-color: #272829;
 }

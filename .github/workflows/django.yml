@@ -38,10 +38,10 @@ jobs:
       run: |
         pkill -f "python manage.py runserver"
         
-    - name: Badge Action
-      uses: emibcn/badge-action@v2.0.2
+    - name: Time badge
+      uses: RubbaBoy/BYOB@v1.3.0
       with:
-        label: 'Running server'
-        status: '100%'
-        color: 'blue,555,daf'
-        path: '.github/workflows/django.yml/badge.svg'
+        NAME: time
+        LABEL: 'Updated at'
+        STATUS: ${{ steps.date.outputs.data }}
+        COLOR: 00EEFF

@@ -7,6 +7,12 @@ from .forms import RegistroForm, EmailForm, HistorialForm
 from .models import Historial
 
 import js2py
+from openai import OpenAI
+
+from dotenv import load_dotenv
+import os 
+load_dotenv()
+
 
 def Home(request):
     if request.user.is_authenticated:
@@ -115,3 +121,22 @@ def RenderCode(request):
     log = js2py.eval_js("function sumar(){"+code+ "}sumar()")
     
     return HttpResponse( log )
+
+def AnalizeCode(request):
+    code = request.GET.get('code','')
+    client = OpenAI()
+
+    completion = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "Dame una explicacion para personal no tecnico de que hace este codigo, en caso de que veas un error dimelo"},
+        {"role": "user", "content": f"{code}"}
+    ]
+    )
+
+    reply=completion.choices[0].message.content
+    print(reply)
+    
+    return HttpResponse( reply ) 
+
+    

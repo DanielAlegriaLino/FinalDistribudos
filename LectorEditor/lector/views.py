@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import RegistroForm, EmailForm, HistorialForm
@@ -137,6 +137,27 @@ def AnalizeCode(request):
     reply=completion.choices[0].message.content
     print(reply)
     
-    return HttpResponse( reply ) 
+    return HttpResponse( reply )
+
+def Delete(request, registro_id):
+    registro = get_object_or_404(Historial, id=registro_id)
+    if request.method == 'POST':
+        registro.delete()
+        return redirect('Historial')
+    
+    return render(request, 'Historial.html', {'registro': registro})
+
+def Open(request, registro_id):
+    registro = get_object_or_404(Historial, id=registro_id)
+
+    if request.method == 'POST':
+        form = HistorialForm(request.POST, instance=registro)
+        if form.is_valid():
+            form.user = request.user
+            form.save()
+            return redirect('Historial')
+    else:
+        form = HistorialForm(instance=registro)
+    return render(request, 'editor-clon.html', {'registro': registro, 'form': form})
 
     
